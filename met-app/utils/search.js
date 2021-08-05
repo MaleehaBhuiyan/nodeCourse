@@ -10,15 +10,12 @@ const search = (searchKey, callback) => {
             callback('No searches found, please try again.', undefined)
         } else {
             callback(undefined, {
-                searchArr: resp.body.objectIDs
+                searchTerm: searchKey,
+                total: resp.body.total,
+                // searchArr: resp.body.objectIDs play with this later 
             })
         }
     })
 }
-
-search('Sunflowers', (err, data) => {
-  console.log('Error', err)
-  console.log('Data', data)
-})
 
 module.exports = search
