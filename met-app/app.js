@@ -7,22 +7,24 @@ const searchKey = process.argv[2]
 if(!searchKey){
     console.log('Please provide a search term.')
 } else {
-    search(searchKey, (err, searchData) => {
+    search(searchKey, (err, { total, searchTerm, searchArr } = {}) => {
         if(err){
             return console.log(err)
         }
-        console.log(searchData.total)
-        console.log(searchData.searchTerm)
-
-        art(searchData.searchArr, (err, artData) => {
+        console.log(total)
+        console.log(searchTerm)
+      
+        art(searchArr, (err, { title, img, artist, culture, beginDate, endDate } = {}) => {
             if(err){
                 return console.log(err)
             }
-
-            console.log(artData.title)
-            console.log(artData.img)
-
-
+            console.log(title)
+            console.log(img)
+            console.log(artist)
+            console.log(culture)
+            console.log(beginDate)
+            console.log(endDate)
+            console.log('-------------------------------------')
         })
     })
 }
